@@ -1,4 +1,4 @@
-Задание 1
+Task 1
 
 Shape.java
 
@@ -210,7 +210,7 @@ public class Main {
         System.out.println(s1.getPerimeter());
         System.out.println(s1.getColor());
         System.out.println(s1.isFilled());
-        //System.out.println(s1.getRadius()); - ошибка, в классе Shape нет метода getRadius
+        //System.out.println(s1.getRadius()); - Г®ГёГЁГЎГЄГ , Гў ГЄГ«Г Г±Г±ГҐ Shape Г­ГҐГІ Г¬ГҐГІГ®Г¤Г  getRadius
 
         Circle c1 = (Circle)s1; // Downcast back to Circle
         System.out.println(c1);
@@ -220,14 +220,14 @@ public class Main {
         System.out.println(c1.isFilled());
         System.out.println(c1.getRadius());
 
-        //Shape s2 = new Shape(); - ошибка, нельзя создать объект из абстрактного класса
+        //Shape s2 = new Shape(); - Г®ГёГЁГЎГЄГ , Г­ГҐГ«ГјГ§Гї Г±Г®Г§Г¤Г ГІГј Г®ГЎГєГҐГЄГІ ГЁГ§ Г ГЎГ±ГІГ°Г ГЄГІГ­Г®ГЈГ® ГЄГ«Г Г±Г±Г 
 
         Shape s3 = new Rectangle(1.0, 2.0, "RED", false); // Upcast
         System.out.println(s3);
         System.out.println(s3.getArea());
         System.out.println(s3.getPerimeter());
         System.out.println(s3.getColor());
-        //System.out.println(s3.getLength()); - ошибка, в классе Shape нет метода getLength
+        //System.out.println(s3.getLength()); - Г®ГёГЁГЎГЄГ , Гў ГЄГ«Г Г±Г±ГҐ Shape Г­ГҐГІ Г¬ГҐГІГ®Г¤Г  getLength
 
         Rectangle r1 = (Rectangle)s3; // downcast
         System.out.println(r1);
@@ -239,7 +239,7 @@ public class Main {
         System.out.println(s4);
         System.out.println(s4.getArea());
         System.out.println(s4.getColor());
-        //System.out.println(s4.getSide()); - ошибка, в классе Shape нет метода getSide
+        //System.out.println(s4.getSide()); - Г®ГёГЁГЎГЄГ , Гў ГЄГ«Г Г±Г±ГҐ Shape Г­ГҐГІ Г¬ГҐГІГ®Г¤Г  getSide
 
         // Take note that we downcast Shape s4 to Rectangle,
         // which is a superclass of Square, instead of Square
@@ -247,7 +247,7 @@ public class Main {
         System.out.println(r2);
         System.out.println(r2.getArea());
         System.out.println(r2.getColor());
-        //System.out.println(r2.getSide()); - ошибка, в классе Rectangle нет метода getSide
+        //System.out.println(r2.getSide()); - Г®ГёГЁГЎГЄГ , Гў ГЄГ«Г Г±Г±ГҐ Rectangle Г­ГҐГІ Г¬ГҐГІГ®Г¤Г  getSide
         System.out.println(r2.getLength());
 
         // Downcast Rectangle r2 to Square
@@ -261,7 +261,7 @@ public class Main {
 }
 
 
-Задание 2
+Task 2
 
 Movable.java
 
