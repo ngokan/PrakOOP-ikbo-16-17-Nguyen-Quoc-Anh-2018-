@@ -1,0 +1,369 @@
+Задание 1
+
+Shape.java
+
+package com.company;
+
+public abstract class Shape {
+    protected String color;
+    protected boolean filled;
+
+    public Shape(){
+        this.color = "white";
+        this.filled = false;
+    }
+    public Shape (String color, boolean filled){
+        this.color = color;
+        this.filled = filled;
+    }
+
+    public String getColor(){
+        return this.color;
+    }
+
+    public void setColor(String color){
+        this.color = color;
+    }
+
+    public boolean isFilled(){
+        return this.filled;
+    }
+
+    public void setFilled(boolean filled){
+        this.filled = filled;
+    }
+
+    abstract double getArea();
+    abstract double getPerimeter();
+    public abstract String toString();
+}
+
+
+Rectangle.java
+
+package com.company;
+
+public class Rectangle extends Shape {
+    protected double width;
+    protected double length;
+
+    public Rectangle(){
+        this.width = 1;
+        this.length = 2;
+        this.color = "white";
+        this.filled = false;
+    }
+
+    public Rectangle(double width, double length){
+        this.width = width;
+        this.length = length;
+        this.color = "white";
+        this.filled = false;
+    }
+
+    public Rectangle(double width, double length, String color, boolean filled){
+        this.width = width;
+        this.length = length;
+        this.color = color;
+        this.filled = filled;
+    }
+
+    public double getWidth(){
+        return this.width;
+    }
+
+    public void setWidth(double width){
+        this.width = width;
+    }
+
+    public double getLength(){
+        return this.length;
+    }
+
+    public void setLength(double length){
+        this.length = length;
+    }
+
+    public double getArea(){
+        return this.length*this.width;
+    }
+
+    public double getPerimeter(){
+        return 2*(this.length+this.width);
+    }
+
+    public String toString(){
+        return "Shape: Rectangle, length: "+this.length+", width: "+this.width+",color: "+this.color;
+    }
+}
+
+
+Square.java
+
+package com.company;
+
+public class Square extends Rectangle {
+    public Square(){
+        this.width = 1;
+        this.length = 1;
+        this.color = "white";
+        this.filled = false;
+    }
+
+    public Square(double side){
+        this.width = side;
+        this.length = side;
+        this.color = "white";
+        this.filled = false;
+    }
+
+    public Square(double side, String color, boolean filled){
+        this.width = side;
+        this.length = side;
+        this.color = color;
+        this.filled = filled;
+    }
+
+    public double getSide(){
+        return this.length;
+    }
+
+    public void setSide(double side){
+        this.width = side;
+        this.length = side;
+    }
+
+    public void setWidth(double side){
+        this.width = side;
+        this.length = side;
+    }
+
+    public void setLength(double side){
+        this.width = side;
+        this.length = side;
+    }
+
+    public String toString(){
+        return "Shape: Rectangle, side: "+this.length+",color: "+this.color;
+    }
+}
+
+
+Circle.java
+
+package com.company;
+
+public class Circle extends Shape {
+    protected double radius;
+
+    public Circle(){
+        this.radius = 1;
+        this.color = "white";
+        this.filled = false;
+    }
+
+    public Circle(double radius){
+        this.radius = radius;
+        this.color = "white";
+        this.filled = false;
+    }
+
+    public Circle(double radius, String color, boolean filled){
+        this.radius = radius;
+        this.color = color;
+        this.filled = filled;
+    }
+
+    public double getRadius(){
+        return this.radius;
+    }
+
+    public void setRaadius(double radius){
+        this.radius = radius;
+    }
+
+    public double getArea(){
+        return Math.PI*radius*radius;
+    }
+
+    public double getPerimeter(){
+        return 2*Math.PI*radius;
+    }
+
+    public String toString(){
+        return "Shape: circle, radius: "+this.radius+",color: "+this.color;
+    }
+}
+
+
+Main.java
+
+package com.company;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Shape s1 = new Circle(5.5, "RED", false); // Upcast Circle to Shape
+        System.out.println(s1);
+        System.out.println(s1.getArea());
+        System.out.println(s1.getPerimeter());
+        System.out.println(s1.getColor());
+        System.out.println(s1.isFilled());
+        //System.out.println(s1.getRadius()); - ошибка, в классе Shape нет метода getRadius
+
+        Circle c1 = (Circle)s1; // Downcast back to Circle
+        System.out.println(c1);
+        System.out.println(c1.getArea());
+        System.out.println(c1.getPerimeter());
+        System.out.println(c1.getColor());
+        System.out.println(c1.isFilled());
+        System.out.println(c1.getRadius());
+
+        //Shape s2 = new Shape(); - ошибка, нельзя создать объект из абстрактного класса
+
+        Shape s3 = new Rectangle(1.0, 2.0, "RED", false); // Upcast
+        System.out.println(s3);
+        System.out.println(s3.getArea());
+        System.out.println(s3.getPerimeter());
+        System.out.println(s3.getColor());
+        //System.out.println(s3.getLength()); - ошибка, в классе Shape нет метода getLength
+
+        Rectangle r1 = (Rectangle)s3; // downcast
+        System.out.println(r1);
+        System.out.println(r1.getArea());
+        System.out.println(r1.getColor());
+        System.out.println(r1.getLength());
+
+        Shape s4 = new Square(6.6); // Upcast
+        System.out.println(s4);
+        System.out.println(s4.getArea());
+        System.out.println(s4.getColor());
+        //System.out.println(s4.getSide()); - ошибка, в классе Shape нет метода getSide
+
+        // Take note that we downcast Shape s4 to Rectangle,
+        // which is a superclass of Square, instead of Square
+        Rectangle r2 = (Rectangle)s4;
+        System.out.println(r2);
+        System.out.println(r2.getArea());
+        System.out.println(r2.getColor());
+        //System.out.println(r2.getSide()); - ошибка, в классе Rectangle нет метода getSide
+        System.out.println(r2.getLength());
+
+        // Downcast Rectangle r2 to Square
+        Square sq1 = (Square)r2;
+        System.out.println(sq1);
+        System.out.println(sq1.getArea());
+        System.out.println(sq1.getColor());
+        System.out.println(sq1.getSide());
+        System.out.println(sq1.getLength());
+    }
+}
+
+
+Задание 2
+
+Movable.java
+
+package com.company;
+
+public interface Movable {
+    public void moveUp();
+    public void moveDown();
+    public void moveLeft();
+    public void moveRight();
+}
+
+MovablePoint.java
+
+package com.company;
+
+public class MovablePoint implements Movable {
+    int x;
+    int y;
+    int xSpeed;
+    int ySpeed;
+
+    public MovablePoint(int x, int y, int xSpeed, int ySpeed){
+        this.x = x;
+        this.y = y;
+        this.xSpeed = xSpeed;
+        this.ySpeed = ySpeed;
+    }
+
+    public void moveUp(){
+        this.y += ySpeed;
+    }
+
+    public void moveDown(){
+        this.y -= ySpeed;
+    }
+
+    public void moveLeft(){
+        this.x -= xSpeed;
+    }
+
+    public void moveRight(){
+        this.x += xSpeed;
+    }
+
+    public String toString(){
+        return "Point coordinates. Coordinate x: "+ this.x +", coordinate y: "+ this.y + '.';
+    }
+}
+
+
+MovableCircle.java
+
+package com.company;
+
+public class MovableCircle {
+    private int radius;
+    private MovablePoint center;
+
+    public MovableCircle(int x, int y, int xSpeed, int ySpeed, int radius){
+        this.center = new MovablePoint(x,y,xSpeed,ySpeed);
+        this.radius = radius;
+    }
+
+    public void moveUp(){
+        center.y += center.ySpeed;
+    }
+
+    public void moveDown(){
+        this.center.y -= this.center.ySpeed;
+    }
+
+    public void moveLeft(){
+        this.center.x -= this.center.xSpeed;
+    }
+
+    public void moveRight(){
+        this.center.x += this.center.xSpeed;
+    }
+    public String toString(){
+        return "Coordinates of the center: x = "+ this.center.x +" y = "+ this.center.y + ". Radius = " + this.radius + '.';
+    }
+}
+
+
+Main.java
+
+package com.company;
+
+public class Main {
+
+    public static void main(String[] args) {
+	MovablePoint point = new MovablePoint(0,0,1,1);
+	point.moveUp();
+	point.moveRight();
+	point.moveUp();
+	point.moveRight();
+	System.out.println(point);
+
+	MovableCircle circle = new MovableCircle(0,0,2,2,3);
+	circle.moveDown();
+	circle.moveLeft();
+	System.out.println(circle);
+    }
+}
