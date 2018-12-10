@@ -1,0 +1,22 @@
+//задание 2. От 1 до n.
+//Main.java
+
+package com.company;
+import java.util.Scanner;
+
+public class Main {
+
+    public  static void recursion(int n, int num) {
+        if (n <= num) {
+            System.out.print(n + " ");
+            recursion(n+1,num);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Введите число: ");
+        int num = scan.nextInt();
+        recursion(1, num);
+    }
+}
