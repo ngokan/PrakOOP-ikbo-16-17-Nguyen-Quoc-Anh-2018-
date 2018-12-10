@@ -7,16 +7,16 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Window extends JFrame {
-    JPanel[] pnl = new JPanel[3];
-    int milan = 0;
-    int madrid = 0;
-    String lastScorer = "N/A";
-    String winner = "Draw";
-    JButton butMilan = new JButton("AC Milan");
-    JButton butMadrid = new JButton("Real Madrid");
-    JLabel labelResult = new JLabel("Result "+milan+" X "+madrid);
-    JLabel labelLast = new JLabel("Last Scorer: "+lastScorer);
-    JLabel labelWinner = new JLabel("Winner: "+winner);
+    private JPanel[] pnl = new JPanel[3];
+    private int milan = 0;
+    private int madrid = 0;
+    private String lastScorer = "N/A";
+    private String winner = "Draw";
+    private JButton butMilan = new JButton("AC Milan");
+    private JButton butMadrid = new JButton("Real Madrid");
+    private JLabel labelResult = new JLabel("Result "+milan+" X "+madrid);
+    private JLabel labelLast = new JLabel("Last Scorer: "+lastScorer);
+    private JLabel labelWinner = new JLabel("Winner: "+winner);
 
     public Window(){
         super("Football");
