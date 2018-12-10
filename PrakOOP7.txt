@@ -1,0 +1,80 @@
+//Stack.java
+package com.company;
+import java.util.Vector;
+
+public class Stack {
+    private Vector vec = new Vector();
+
+    public boolean empty(){
+        return vec.isEmpty();
+    }
+
+    public void push(Object element){
+        vec.add(element);
+    }
+
+    public int peek(){
+        int element;
+        element =  Integer.valueOf((int)vec.firstElement());
+        return element;
+    }
+    
+    public int pop(){
+        int element;
+        element =  Integer.valueOf((int)vec.firstElement());
+        vec.remove(0);
+        return element;
+    }
+}
+
+
+//Main.java
+package com.company;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        int moveCount = 0;
+        Scanner scan = new Scanner(System.in);
+	    Stack first = new Stack();
+        Stack second = new Stack();
+        System.out.print("¬ведите 5 карт первого игрока: ");
+        for(int i = 0; i < 5; i++){
+            first.push(scan.nextInt());
+        }
+        System.out.print("¬ведите 5 карт второго игрока: ");
+        for(int i = 0; i < 5; i++){
+            second.push(scan.nextInt());
+        }
+
+        while(!(first.empty() || second.empty())){
+            moveCount++;
+            if (moveCount == 107){
+                System.out.println("botva");
+                break;
+            }
+            else{
+                if((first.peek()==0) && (second.peek()==9)){
+                    first.push(first.pop());
+                    first.push(second.pop());
+                }
+                else if((first.peek()==9) && (second.peek()==0)){
+                    second.push(second.pop());
+                    second.push(first.pop());
+                }
+                else if(first.peek()<second.peek()){
+                    second.push(second.pop());
+                    second.push(first.pop());
+                }
+                else if(first.peek()>second.peek()){
+                    first.push(first.pop());
+                    first.push(second.pop());
+                }
+            }
+        }
+
+        if(first.empty()) System.out.println("second " + moveCount);
+        else if(second.empty()) System.out.println("first " + moveCount);
+    }
+}
