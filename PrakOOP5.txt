@@ -1,4 +1,4 @@
-//задание 2. От 1 до n.
+//Task 2. From 1 to n.
 //Main.java
 
 package com.company;
@@ -15,7 +15,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        System.out.print("Введите число: ");
+        System.out.print("Г‚ГўГҐГ¤ГЁГІГҐ Г·ГЁГ±Г«Г®: ");
         int num = scan.nextInt();
         recursion(1, num);
     }
