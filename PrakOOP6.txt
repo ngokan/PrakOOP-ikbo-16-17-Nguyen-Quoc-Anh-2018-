@@ -1,0 +1,77 @@
+//Task 1
+//Student.java
+
+package com.company;
+import java.util.Random;
+
+public class Student {
+    private static int[] iDNumber;
+    private static Random generator = new Random();
+
+    public Student(int length) {
+        iDNumber = new int[length];
+        for (int i = 0; i < iDNumber.length; i++) {
+            iDNumber[i] = generator.nextInt(50);
+        }
+    }
+
+    public void qPrint(){
+        System.out.println("Массив из " + iDNumber.length + " элементов:");
+        for (int i = 0; i < iDNumber.length; i++) {
+            System.out.print(iDNumber[i] + " ");
+        }
+    }
+
+    public void qSort() {
+        int startIndex = 0;
+        int endIndex = iDNumber.length - 1;
+        doSort(startIndex, endIndex);
+    }
+
+    private void doSort(int start, int end) {
+        if (start >= end)
+            return;
+        int i = start, j = end;
+        int cur = i - (i - j) / 2;
+        while (i < j) {
+            while (i < cur && (iDNumber[i] <= iDNumber[cur])) {
+                i++;
+            }
+            while (j > cur && (iDNumber[cur] <= iDNumber[j])) {
+                j--;
+            }
+            if (i < j) {
+                int temp = iDNumber[i];
+                iDNumber[i] = iDNumber[j];
+                iDNumber[j] = temp;
+                if (i == cur)
+                    cur = j;
+                else if (j == cur)
+                    cur = i;
+            }
+        }
+        doSort(start, cur);
+        doSort(cur + 1, end);
+    }
+}
+
+
+//Main.java
+package com.company;
+
+public class Main {
+
+
+    public static void main(String[] args) {
+        System.out.println("Сортировка массива iDNumber методом Quick Sort");
+        Student sortQ = new Student(10);
+        System.out.println("Начальный массив");
+        sortQ.qPrint();
+        sortQ.qSort();
+        System.out.println();
+        System.out.println("Отсортированный массив");
+        sortQ.qPrint();
+
+
+    }
+}
